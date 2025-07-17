@@ -81,37 +81,45 @@ const recentBookings = [
 
 function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center gap-2 p-4">
-          <div className="w-18 h-8 bg-[#2F455C] rounded-2xl flex items-center justify-center px-3">
-            <span className="text-[#1DCDFE] font-medium text-sm">chalo</span>
+    <div className="relative">
+      <Sidebar>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 p-4">
+            <div className="w-18 h-8 bg-[#2F455C] rounded-2xl flex items-center justify-center px-3">
+              <span className="text-[#1DCDFE] font-medium text-sm">chalo</span>
+            </div>
           </div>
-          <ChevronLeft className="w-8 h-8 text-white bg-[#21D0B3] rounded-full p-1" />
-        </div>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {navigationItems.map((item) => (
-                <SidebarMenuItem key={item.label}>
-                  <SidebarMenuButton 
-                    asChild 
-                    className={item.active ? "text-[#21D0B3]" : "text-[#2F455C]"}
-                  >
-                    <a href="#">
-                      <item.icon className="w-3 h-3" />
-                      <span className="text-xs">{item.label}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {navigationItems.map((item) => (
+                  <SidebarMenuItem key={item.label}>
+                    <SidebarMenuButton 
+                      asChild 
+                      className={item.active ? "text-[#21D0B3]" : "text-[#2F455C]"}
+                    >
+                      <a href="#">
+                        <item.icon className="w-3 h-3" />
+                        <span className="text-xs">{item.label}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+      
+      {/* Sidebar Trigger positioned on the right edge */}
+      <div className="absolute top-6 -right-4 z-10">
+        <SidebarTrigger className="w-8 h-8 text-white bg-[#21D0B3] rounded-full p-1 hover:bg-[#1BB5A8] border-0">
+          <ChevronLeft className="w-4 h-4" />
+        </SidebarTrigger>
+      </div>
+    </div>
   );
 }
 
@@ -125,7 +133,6 @@ export default function HomePage() {
           {/* Header */}
           <div className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
             <div className="flex items-center gap-4">
-              <SidebarTrigger />
               <h1 className="text-xl font-medium text-black">Dashboard</h1>
             </div>
             <div className="flex items-center gap-4">
